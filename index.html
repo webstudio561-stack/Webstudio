@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tworzenie Stron WWW | Profesjonalne strony od 400 zł</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fafafa;--text:#111827;--muted:#6b7280;--accent:#111827;--accent-light:#374151;--card:#ffffff;--border:#e5e7eb;--success:#10b981}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;padding:1.2rem 4rem;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(250,250,250,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+nav.scrolled{padding:0.8rem 4rem;box-shadow:0 4px 20px rgba(0,0,0,0.05)}
+.logo{font-weight:700;font-size:1.3rem;letter-spacing:-0.5px}
+.logo span{font-weight:300}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.9rem;font-weight:500;transition:color .3s;position:relative}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--text);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:0.6rem 1.4rem;background:var(--text);color:#fff;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:500;transition:all .3s}
+.nav-cta:hover{background:var(--accent-light);transform:translateY(-1px)}
+.mobile-menu{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.mobile-menu span{width:24px;height:2px;background:var(--text);transition:.3s}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg::before{content:'';position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(17,24,39,0.03) 0%,transparent 70%);border-radius:50%}
+.hero-bg::after{content:'';position:absolute;bottom:10%;right:10%;width:300px;height:300px;background:radial-gradient(circle,rgba(17,24,39,0.02) 0%,transparent 70%);border-radius:50%}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-badge{display:inline-block;padding:0.4rem 1rem;border:1px solid var(--border);border-radius:50px;font-size:0.75rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:2rem;animation:fadeInUp 1s ease}
+.hero h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-2px;margin-bottom:1.5rem;animation:fadeInUp 1.1s ease}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--text),var(--muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:500px;margin:0 auto 2.5rem;animation:fadeInUp 1.2s ease}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeInUp 1.3s ease}
+.btn-primary{padding:1rem 2.2rem;background:var(--text);color:#fff;border-radius:8px;text-decoration:none;font-weight:500;transition:all .3s;border:none;cursor:pointer;font-size:0.95rem}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+.btn-secondary{padding:1rem 2.2rem;background:transparent;color:var(--text);border:1.5px solid var(--border);border-radius:8px;text-decoration:none;font-weight:500;transition:all .3s}
+.btn-secondary:hover{border-color:var(--text)}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+.section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:1rem}
+.section-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-1px;margin-bottom:1rem}
+.section-sub{color:var(--muted);max-width:500px;margin:0 auto}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-top:3rem}
+.why-card{padding:2.5rem;background:var(--card);border:1px solid var(--border);border-radius:12px;transition:all .3s}
+.why-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.06);border-color:transparent}
+.why-icon{width:48px;height:48px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.5rem}
+.why-card h3{font-size:1.1rem;margin-bottom:0.5rem}
+.why-card p{font-size:0.9rem;color:var(--muted)}
+
+/* OFFER */
+.offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;align-items:start}
+.offer-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:2.5rem;transition:all .3s;position:relative;overflow:hidden}
+.offer-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(0,0,0,0.08);border-color:transparent}
+.offer-card.featured{border-color:var(--text);transform:scale(1.02)}
+.offer-card.featured:hover{transform:scale(1.02) translateY(-8px)}
+.popular{position:absolute;top:0;right:2rem;transform:translateY(-50%);background:var(--text);color:#fff;padding:0.4rem 1rem;border-radius:20px;font-size:0.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.offer-header{margin-bottom:1.5rem}
+.offer-name{font-size:1.1rem;font-weight:600;margin-bottom:0.3rem}
+.offer-desc{font-size:0.85rem;color:var(--muted)}
+.offer-price{font-size:2.5rem;font-weight:700;letter-spacing:-1px;margin-bottom:0.3rem}
+.offer-price span{font-size:0.9rem;color:var(--muted);font-weight:400}
+.offer-features{list-style:none;margin:1.5rem 0}
+.offer-features li{padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.9rem;display:flex;align-items:center;gap:0.7rem}
+.offer-features li::before{content:"2713";color:var(--success);font-weight:700}
+.offer-btn{display:block;width:100%;padding:0.9rem;text-align:center;background:var(--bg);color:var(--text);border:1.5px solid var(--border);border-radius:8px;text-decoration:none;font-weight:500;transition:all .3s}
+.offer-btn:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.offer-card.featured .offer-btn{background:var(--text);color:#fff;border-color:var(--text)}
+.offer-card.featured .offer-btn:hover{background:var(--accent-light)}
+
+/* PROCESS */
+.process-section{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.process-steps{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:3rem}
+.process-step{flex:1;min-width:200px;text-align:center;position:relative}
+.process-step:not(:last-child)::after{content:'';position:absolute;top:30px;right:-1rem;width:2rem;height:2px;background:var(--border)}
+.step-circle{width:60px;height:60px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;margin:0 auto 1.2rem;background:#fff;transition:all .3s}
+.process-step:hover .step-circle{border-color:var(--text);background:var(--text);color:#fff}
+.process-step h4{margin-bottom:0.5rem}
+.process-step p{font-size:0.85rem;color:var(--muted)}
+
+/* CONTACT */
+.contact-section{background:var(--text);color:#fff;position:relative;overflow:hidden}
+.contact-section::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:rgba(255,255,255,0.02);border-radius:50%}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.contact-info h2{font-size:2.2rem;margin-bottom:1rem;letter-spacing:-1px}
+.contact-info p{color:rgba(255,255,255,0.7);margin-bottom:2rem}
+.contact-detail{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.contact-detail-icon{width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.contact-detail-text h4{font-size:0.85rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem}
+.contact-detail-text p{color:#fff;font-weight:500}
+
+.contact-form{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);padding:2.5rem;border-radius:16px;border:1px solid rgba(255,255,255,0.1)}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.6);margin-bottom:0.5rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.8rem 1rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-family:inherit;font-size:0.95rem;transition:all .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.12)}
+.form-group textarea{min-height:100px;resize:vertical}
+.form-group select option{background:var(--text);color:#fff}
+.submit-btn{width:100%;padding:1rem;background:#fff;color:var(--text);border:none;border-radius:8px;font-weight:600;font-size:0.95rem;cursor:pointer;transition:all .3s}
+.submit-btn:hover{background:rgba(255,255,255,0.9);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{padding:3rem 2rem;text-align:center;color:var(--muted);font-size:0.85rem;border-top:1px solid var(--border)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.nav-links{display:none}
+.mobile-menu{display:flex}
+.hero h1{font-size:2.2rem}
+.contact-grid{grid-template-columns:1fr;gap:3rem}
+.process-step:not(:last-child)::after{display:none}
+.section{padding:4rem 1.5rem}
+nav{padding:1rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<div class="logo">Web<span>Studio</span></div>
+<ul class="nav-links">
+<li><a href="#home">Strona glowna</a></li>
+<li><a href="#oferta">Oferta</a></li>
+<li><a href="#proces">Jak to dziala</a></li>
+<li><a href="#kontakt">Kontakt</a></li>
+</ul>
+<a href="#kontakt" class="nav-cta">Zamow strone</a>
+<div class="mobile-menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+<span></span><span></span><span></span>
+</div>
+</nav>
+
+<section class="hero" id="home">
+<div class="hero-bg"></div>
+<div class="hero-content">
+<div class="hero-badge">Strony internetowe na zamowienie</div>
+<h1>Twoja nowa strona <span class="highlight">od 400 zl</span></h1>
+<p>Tworze nowoczesne, responsywne i przyciagajace wzrok strony internetowe dla firm i osob prywatnych. Szybko, profesjonalnie i w dobrej cenie.</p>
+<div class="hero-buttons">
+<a href="#oferta" class="btn-primary">Zobacz oferte</a>
+<a href="#kontakt" class="btn-secondary">Skontaktuj sie</a>
+</div>
+</div>
+</section>
+
+<section class="section" id="dlaczego">
+<div class="section-header">
+<div class="section-label">Dlaczego warto</div>
+<h2 class="section-title">Co dostajesz w cenie</h2>
+<p class="section-sub">Kazda strona jest tworzona z dbałoscia o detale i potrzeby klienta</p>
+</div>
+<div class="why-grid">
+<div class="why-card">
+<div class="why-icon">&#128187;</div>
+<h3>Responsywny design</h3>
+<p>Strona wyglada perfekcyjnie na komputerze, tablecie i smartfonie.</p>
+</div>
+<div class="why-card">
+<div class="why-icon">&#9881;</div>
+<h3>Szybkie wdrozenie</h3>
+<p>Czas realizacji to zazwyczaj 3-7 dni roboczych od akceptacji projektu.</p>
+</div>
+<div class="why-card">
+<div class="why-icon">&#128161;</div>
+<h3>Nowoczesny wyglad</h3>
+<p>Minimalistyczne, czyste i estetyczne projekty zgodne z aktualnymi trendami.</p>
+</div>
+<div class="why-card">
+<div class="why-icon">&#128222;</div>
+<h3>Wsparcie po oddaniu</h3>
+<p>Po zakonczeniu projektu oferuje pomoc w drobnych zmianach i aktualizacjach.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="oferta" style="background:#fff;border-radius:24px;margin:0 1rem;padding:6rem 2rem;box-shadow:0 4px 20px rgba(0,0,0,0.02)">
+<div class="section-header">
+<div class="section-label">Oferta</div>
+<h2 class="section-title">Wybierz pakiet dla siebie</h2>
+<p class="section-sub">Trzy warianty dopasowane do roznych potrzeb i budzetu</p>
+</div>
+<div class="offer-grid">
+<div class="offer-card">
+<div class="offer-header">
+<div class="offer-name">Pakiet MINI</div>
+<div class="offer-desc">Idealny na start</div>
+</div>
+<div class="offer-price">400 zl <span>/ brutto</span></div>
+<ul class="offer-features">
+<li>Strona one-page (1 strona)</li>
+<li>Minimalistyczny design</li>
+<li>Responsywnosc (mobile)</li>
+<li>Sekcja O mnie + Kontakt</li>
+<li>Podstawowe SEO</li>
+</ul>
+<a href="#kontakt" class="offer-btn">Wybieram</a>
+</div>
+<div class="offer-card featured">
+<div class="popular">Najpopularniejszy</div>
+<div class="offer-header">
+<div class="offer-name">Pakiet PRO</div>
+<div class="offer-desc">Pelna wizytowka</div>
+</div>
+<div class="offer-price">700 zl <span>/ brutto</span></div>
+<ul class="offer-features">
+<li>Do 5 podstron</li>
+<li>Profesjonalny design</li>
+<li>Responsywnosc (mobile)</li>
+<li>Formularz kontaktowy</li>
+<li>Mapa Google + Social media</li>
+<li>Optymalizacja SEO</li>
+</ul>
+<a href="#kontakt" class="offer-btn">Wybieram</a>
+</div>
+<div class="offer-card">
+<div class="offer-header">
+<div class="offer-name">Pakiet PREMIUM</div>
+<div class="offer-desc">Maksymalna funkcjonalnosc</div>
+</div>
+<div class="offer-price">1000 zl <span>/ brutto</span></div>
+<ul class="offer-features">
+<li>Do 10 podstron</li>
+<li>Design premium + animacje</li>
+<li>Responsywnosc (mobile)</li>
+<li>Formularze + Galeria</li>
+<li>Integracja z CMS</li>
+<li>Pelne SEO + wsparcie 30 dni</li>
+</ul>
+<a href="#kontakt" class="offer-btn">Wybieram</a>
+</div>
+</div>
+</section>
+
+<section class="section process-section" id="proces">
+<div class="section-header">
+<div class="section-label">Proces</div>
+<h2 class="section-title">Jak to dziala?</h2>
+<p class="section-sub">Prosty i przejrzysty proces od pierwszego kontaktu po gotowa strone</p>
+</div>
+<div class="process-steps">
+<div class="process-step">
+<div class="step-circle">1</div>
+<h4>Kontakt</h4>
+<p>Wypelniasz formularz lub dzwonisz. Omawiamy Twoje potrzeby i wizje.</p>
+</div>
+<div class="process-step">
+<div class="step-circle">2</div>
+<h4>Wycena</h4>
+<p>Przygotowuje indywidualna wycene i harmonogram realizacji.</p>
+</div>
+<div class="process-step">
+<div class="step-circle">3</div>
+<h4>Realizacja</h4>
+<p>Koduje strone, dostosowuje design i dodaje Twoje tresci.</p>
+</div>
+<div class="process-step">
+<div class="step-circle">4</div>
+<h4>Odbior</h4>
+<p>Prezentuje gotowy projekt. Wprowadzam poprawki i oddaje strone.</p>
+</div>
+</div>
+</section>
+
+<section class="contact-section" id="kontakt">
+<div class="section" style="max-width:1100px">
+<div class="contact-grid">
+<div class="contact-info">
+<h2>Zamow swoja strone</h2>
+<p>Wypelnij formularz, a skontaktuje sie z Toba w ciagu 24h. Mozesz tez zadzwonic lub napisac maila.</p>
+<div class="contact-detail">
+<div class="contact-detail-icon">&#128222;</div>
+<div class="contact-detail-text">
+<h4>Telefon</h4>
+<p>+48 XXX XXX XXX</p>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">&#9993;</div>
+<div class="contact-detail-text">
+<h4>Email</h4>
+<p>kontakt@twojemail.pl</p>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">&#128205;</div>
+<div class="contact-detail-text">
+<h4>Lokalizacja</h4>
+<p>Wojewodztwo Lubelskie / Online</p>
+</div>
+</div>
+</div>
+<div class="contact-form">
+<form onsubmit="event.preventDefault(); alert('Dziekujemy! Twoje zapytanie zostalo wyslane.');">
+<div class="form-group">
+<label>Imie i nazwisko</label>
+<input type="text" placeholder="Jan Kowalski" required>
+</div>
+<div class="form-group">
+<label>Adres email</label>
+<input type="email" placeholder="jan@example.com" required>
+</div>
+<div class="form-group">
+<label>Telefon</label>
+<input type="tel" placeholder="+48 123 456 789">
+</div>
+<div class="form-group">
+<label>Wybierz pakiet</label>
+<select required>
+<option value="">Wybierz...</option>
+<option value="mini">Pakiet MINI — 400 zl</option>
+<option value="pro">Pakiet PRO — 700 zl</option>
+<option value="premium">Pakiet PREMIUM — 1000 zl</option>
+<option value="inne">Inne / Indywidualna wycena</option>
+</select>
+</div>
+<div class="form-group">
+<label>Wiadomosc</label>
+<textarea placeholder="Opisz swoja strone, branze i oczekiwania..."></textarea>
+</div>
+<button type="submit" class="submit-btn">Wyslij zapytanie</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2024 WebStudio. Tworzenie stron internetowych. Wszelkie prawa zastrzezone.</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+const nav=document.getElementById('navbar');
+if(window.scrollY>50) nav.classList.add('scrolled');
+else nav.classList.remove('scrolled');
+});
+</script>
+
+</body>
+  </html>
