@@ -1,180 +1,127 @@
 <!DOCTYPE html><html lang="pl">
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Jak to działa | WebStudio</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Jak to działa — WebStudio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body class="page"><nav id="navbar">
+<div class="container nav-inner"><a href="index.html" class="logo">Web<span>Studio</span></a>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+<ul class="nav-links" id="navLinks">
+<li><a href="index.html">Strona główna</a></li>
+<li><a href="o-nas.html">O nas</a></li>
+<li><a href="jak-to-dziala.html" class="active">Jak to działa</a></li>
+<li><a href="index.html#oferta">Oferta</a></li>
+<li><a href="index.html#kontakt">Kontakt</a></li>
+</ul><a href="index.html#kontakt" class="nav-button">Zamów stronę</a>
+
+<button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+
+</div>
+</nav><header class="page-hero"><div class="container"><div class="badge">Proces współpracy</div><h1>
+Jak to <span class="gradient-text">działa?</span>
+</h1><p>
+Bez skomplikowanych procedur.
+Ustalamy potrzeby, tworzę stronę, wprowadzasz poprawki
+i otrzymujesz gotową realizację.
+</p></div></header><section class="section reveal"><div class="container"><div class="process"><div class="step">
+<div class="step-number">1</div>
+<h3>Kontakt</h3>
+<p>
+Piszesz do mnie i opisujesz,
+czego potrzebujesz.
+</p>
+</div><div class="step">
+<div class="step-number">2</div>
+<h3>Rozmowa</h3>
+<p>
+Ustalamy wygląd, funkcje,
+zakres i termin.
+</p>
+</div><div class="step">
+<div class="step-number">3</div>
+<h3>Projekt</h3>
+<p>
+Przygotowuję stronę zgodnie
+z ustaleniami.
+</p>
+</div><div class="step">
+<div class="step-number">4</div>
+<h3>Poprawki</h3>
+<p>
+Sprawdzasz projekt i zgłaszasz
+ewentualne zmiany.
+</p>
+</div></div></div></section><section class="section reveal"><div class="container"><div class="section-head"><div class="label">FAQ</div><h2 class="section-title">
+Najczęstsze pytania
+</h2></div><div class="faq"><details class="faq-item">
+<summary>Ile trwa stworzenie strony?</summary>
+<div class="faq-answer">
+W zależności od zakresu projektu zazwyczaj kilka dni roboczych.
+Dokładny termin ustalamy przed rozpoczęciem realizacji.
+</div>
+</details><details class="faq-item">
+<summary>Czy strona działa na telefonie?</summary>
+<div class="faq-answer">
+Tak. Strony są przygotowywane responsywnie,
+więc dopasowują się do ekranów telefonów, tabletów i komputerów.
+</div>
+</details><details class="faq-item">
+<summary>Czy mogę później zmienić treść strony?</summary>
+<div class="faq-answer">
+Tak. Możemy ustalić późniejsze aktualizacje
+i dodatkowe zmiany.
+</div>
+</details><details class="faq-item">
+<summary>Czy mogę mieć własną domenę?</summary>
+<div class="faq-answer">
+Tak. Stronę można później podpiąć pod własną domenę,
+np. twojafirma.pl.
+</div>
+</details><details class="faq-item">
+<summary>Jak wygląda płatność?</summary>
+<div class="faq-answer">
+Szczegóły płatności ustalamy indywidualnie przed rozpoczęciem
+realizacji projektu.
+</div>
+</details></div></div></section><section class="contact reveal"><div class="container"><div class="section-head"><div class="label" style="color:#aaa">Gotowy?</div><h2>
+Zacznijmy od wiadomości.
+</h2><div class="buttons"><a href="index.html#kontakt" class="btn btn-light">
+Napisz do WebStudio
+</a></div></div></div></section><footer>
+<div class="container">
+© 2026 WebStudio — Tworzenie stron internetowych.
+</div>
+</footer><script>
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("open");
 }
 
-body{
-    font-family:'Inter',sans-serif;
-    background:#fafafa;
-    color:#111827;
-    line-height:1.6;
-}
+window.addEventListener("scroll",function(){
 
-nav{
-    padding:1.2rem 4rem;
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
-    display:flex;
-    justify-content:space-between;
-}
+    document
+        .getElementById("navbar")
+        .classList.toggle("scrolled",window.scrollY>40);
 
-nav a{
-    text-decoration:none;
-    color:#111827;
-}
+});
 
-.logo{
-    font-weight:800;
-}
+const observer=new IntersectionObserver(
+    entries=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    },
+    {threshold:.12}
+);
 
-.logo span{
-    font-weight:300;
-}
+document.querySelectorAll(".reveal").forEach(
+    element=>observer.observe(element)
+);
 
-.back{
-    color:#6b7280;
-}
-
-main{
-    max-width:1000px;
-    margin:auto;
-    padding:7rem 2rem;
-}
-
-.label{
-    color:#6b7280;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    font-size:.7rem;
-    margin-bottom:1rem;
-}
-
-h1{
-    font-size:clamp(2.5rem,5vw,4.5rem);
-    line-height:1.05;
-    letter-spacing:-2px;
-    margin-bottom:1.5rem;
-}
-
-.intro{
-    color:#6b7280;
-    font-size:1.1rem;
-    max-width:650px;
-    margin-bottom:4rem;
-}
-
-.steps{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1.5rem;
-}
-
-.step{
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:16px;
-    padding:2.5rem;
-    transition:.3s;
-}
-
-.step:hover{
-    transform:translateY(-5px);
-    box-shadow:0 20px 40px rgba(0,0,0,.06);
-}
-
-.number{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:#111827;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:800;
-    margin-bottom:1.5rem;
-}
-
-.step h2{
-    margin-bottom:.7rem;
-}
-
-.step p{
-    color:#6b7280;
-}
-
-.button{
-    display:inline-block;
-    margin-top:3rem;
-    padding:1rem 2rem;
-    background:#111827;
-    color:#fff;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:600;
-}
-
-@media(max-width:700px){
-
-    nav{
-        padding:1rem 1.3rem;
-    }
-
-    main{
-        padding:5rem 1.3rem;
-    }
-
-    .steps{
-        grid-template-columns:1fr;
-    }
-
-}
-
-</style></head><body><nav><a href="index.html" class="logo">
-Web<span>Studio</span>
-</a><a href="index.html" class="back">
-← Wróć
-</a></nav><main><div class="label">
-Współpraca
-</div><h1>
-Jak to działa?
-</h1><p class="intro">
-Bez skomplikowanych procedur. Ustalamy, czego potrzebujesz,
-a następnie zajmuję się przygotowaniem strony od początku do końca.
-</p><div class="steps"><div class="step"><div class="number">
-1
-</div><h2>
-Kontakt
-</h2><p>
-Napisz do mnie i opowiedz, czym zajmuje się Twoja firma
-oraz czego oczekujesz od swojej strony internetowej.
-</p></div><div class="step"><div class="number">
-2
-</div><h2>
-Wycena
-</h2><p>
-Ustalamy zakres prac, wygląd strony, funkcje,
-termin realizacji oraz cenę projektu.
-</p></div><div class="step"><div class="number">
-3
-</div><h2>
-Projekt
-</h2><p>
-Przygotowuję stronę, dodaję Twoje materiały
-i dopasowuję projekt do charakteru Twojej firmy.
-</p></div><div class="step"><div class="number">
-4
-</div><h2>
-Gotowa strona
-</h2><p>
-Po akceptacji projektu strona zostaje opublikowana
-i otrzymujesz gotowy adres swojej witryny.
-</p></div></div><a href="index.html#kontakt" class="button">
-Zamów stronę
-</a></main></body>
+</script></body>
 </html>
