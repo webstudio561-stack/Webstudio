@@ -1,1542 +1,217 @@
-<!DOCTYPE html><html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WebStudio — Nowoczesne strony internetowe</title><meta
-name="description"
-content="WebStudio tworzy nowoczesne, responsywne strony internetowe dla małych firm i osób prywatnych."
+<!DOCTYPE html><html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WebStudio — Strony internetowe</title>
+<meta name="description" content="WebStudio — nowoczesne strony internetowe dla firm i osób prywatnych.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body class="page"><nav id="navbar">
+<div class="container nav-inner"><a href="index.html" class="logo">Web<span>Studio</span></a>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="index.html" class="active">Strona główna</a></li>
+<li><a href="o-nas.html">O nas</a></li>
+<li><a href="jak-to-dziala.html">Jak to działa</a></li>
+<li><a href="#oferta">Oferta</a></li>
+<li><a href="#kontakt">Kontakt</a></li>
+</ul><a href="#kontakt" class="nav-button">Zamów stronę</a>
+
+<button class="mobile-toggle" onclick="toggleMenu()">☰</button>
 
-«»
-
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet"
-><style>
-
-/* =========================================================
-   ZMIENNE
-========================================================= */
-
-:root{
-    --bg:#fafafa;
-    --text:#111827;
-    --muted:#6b7280;
-    --accent:#111827;
-    --accent-light:#374151;
-    --card:#ffffff;
-    --border:#e5e7eb;
-    --success:#10b981;
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Inter',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.6;
-    overflow-x:hidden;
-}
-
-
-/* =========================================================
-   ANIMACJA PRZEJŚCIA STRONY
-========================================================= */
-
-body{
-    animation:pageEnter .7s ease;
-}
-
-@keyframes pageEnter{
-
-    from{
-        opacity:0;
-        transform:translateY(12px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-
-/* =========================================================
-   NAV
-========================================================= */
-
-nav{
-
-    position:fixed;
-
-    top:0;
-
-    width:100%;
-
-    padding:1.2rem 4rem;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    z-index:1000;
-
-    background:rgba(250,250,250,.88);
-
-    backdrop-filter:blur(20px);
-
-    border-bottom:1px solid var(--border);
-
-    transition:
-        padding .3s ease,
-        box-shadow .3s ease,
-        background .3s ease;
-
-}
-
-nav.scrolled{
-
-    padding:.8rem 4rem;
-
-    box-shadow:0 4px 25px rgba(0,0,0,.06);
-
-    background:rgba(250,250,250,.95);
-
-}
-
-
-.logo{
-
-    font-weight:800;
-
-    font-size:1.3rem;
-
-    letter-spacing:-.7px;
-
-    text-decoration:none;
-
-}
-
-.logo span{
-
-    font-weight:300;
-
-}
-
-
-.nav-links{
-
-    display:flex;
-
-    gap:2rem;
-
-    list-style:none;
-
-}
-
-.nav-links a{
-
-    text-decoration:none;
-
-    color:var(--muted);
-
-    font-size:.9rem;
-
-    font-weight:500;
-
-    position:relative;
-
-    transition:.3s;
-
-}
-
-.nav-links a:hover{
-
-    color:var(--text);
-
-}
-
-.nav-links a::after{
-
-    content:"";
-
-    position:absolute;
-
-    bottom:-6px;
-
-    left:0;
-
-    width:0;
-
-    height:2px;
-
-    background:var(--text);
-
-    transition:.3s;
-
-}
-
-.nav-links a:hover::after{
-
-    width:100%;
-
-}
-
-
-.nav-cta{
-
-    padding:.65rem 1.4rem;
-
-    background:var(--text);
-
-    color:#fff;
-
-    border-radius:7px;
-
-    text-decoration:none;
-
-    font-size:.85rem;
-
-    font-weight:600;
-
-    transition:.3s;
-
-}
-
-.nav-cta:hover{
-
-    background:var(--accent-light);
-
-    transform:translateY(-2px);
-
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
-
-}
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-.mobile-menu{
-
-    display:none;
-
-    flex-direction:column;
-
-    gap:5px;
-
-    cursor:pointer;
-
-}
-
-.mobile-menu span{
-
-    width:24px;
-
-    height:2px;
-
-    background:var(--text);
-
-    transition:.3s;
-
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    padding:8rem 2rem 4rem;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.hero-bg{
-
-    position:absolute;
-
-    inset:0;
-
-    overflow:hidden;
-
-}
-
-.hero-bg::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:10%;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:700px;
-
-    height:700px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(17,24,39,.06),
-            transparent 70%
-        );
-
-    border-radius:50%;
-
-    animation:
-        floatingGlow 8s ease-in-out infinite;
-
-}
-
-@keyframes floatingGlow{
-
-    0%,100%{
-        transform:translateX(-50%) scale(1);
-    }
-
-    50%{
-        transform:translateX(-50%) scale(1.08);
-    }
-
-}
-
-
-.hero-content{
-
-    position:relative;
-
-    z-index:1;
-
-    max-width:850px;
-
-    animation:heroEnter 1s ease;
-
-}
-
-@keyframes heroEnter{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(35px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-
-.hero-badge{
-
-    display:inline-block;
-
-    padding:.45rem 1rem;
-
-    border:1px solid var(--border);
-
-    border-radius:50px;
-
-    font-size:.72rem;
-
-    color:var(--muted);
-
-    letter-spacing:1.5px;
-
-    text-transform:uppercase;
-
-    margin-bottom:2rem;
-
-    transition:.3s;
-
-}
-
-.hero-badge:hover{
-
-    border-color:#9ca3af;
-
-    transform:translateY(-2px);
-
-}
-
-
-.hero h1{
-
-    font-size:clamp(2.6rem,6vw,5rem);
-
-    font-weight:800;
-
-    line-height:1.05;
-
-    letter-spacing:-3px;
-
-    margin-bottom:1.5rem;
-
-}
-
-.highlight{
-
-    background:
-        linear-gradient(
-            135deg,
-            #111827,
-            #6b7280
-        );
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
-}
-
-
-.hero p{
-
-    font-size:1.15rem;
-
-    color:var(--muted);
-
-    max-width:620px;
-
-    margin:0 auto 2.5rem;
-
-}
-
-
-.hero-buttons{
-
-    display:flex;
-
-    gap:1rem;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-}
-
-
-.btn-primary,
-.btn-secondary{
-
-    padding:1rem 2.2rem;
-
-    border-radius:8px;
-
-    text-decoration:none;
-
-    font-weight:600;
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        border-color .3s ease;
-
-}
-
-
-.btn-primary{
-
-    background:var(--text);
-
-    color:#fff;
-
-}
-
-.btn-primary:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.17);
-
-}
-
-
-.btn-secondary{
-
-    border:1.5px solid var(--border);
-
-}
-
-.btn-secondary:hover{
-
-    border-color:var(--text);
-
-    transform:translateY(-3px);
-
-}
-
-
-/* =========================================================
-   SEKCJE
-========================================================= */
-
-.section{
-
-    padding:6rem 2rem;
-
-    max-width:1100px;
-
-    margin:auto;
-
-}
-
-.section-header{
-
-    text-align:center;
-
-    margin-bottom:4rem;
-
-}
-
-.section-label{
-
-    font-size:.72rem;
-
-    text-transform:uppercase;
-
-    letter-spacing:3px;
-
-    color:var(--muted);
-
-    margin-bottom:1rem;
-
-}
-
-.section-title{
-
-    font-size:clamp(1.9rem,3vw,2.6rem);
-
-    font-weight:800;
-
-    letter-spacing:-1px;
-
-    margin-bottom:1rem;
-
-}
-
-.section-sub{
-
-    color:var(--muted);
-
-    max-width:560px;
-
-    margin:auto;
-
-}
-
-
-/* =========================================================
-   ANIMACJE SCROLL
-========================================================= */
-
-.reveal{
-
-    opacity:0;
-
-    transform:translateY(35px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-
-}
-
-.reveal.visible{
-
-    opacity:1;
-
-    transform:translateY(0);
-
-}
-
-
-/* =========================================================
-   WHY
-========================================================= */
-
-.why-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(240px,1fr)
-        );
-
-    gap:1.5rem;
-
-}
-
-.why-card{
-
-    padding:2.3rem;
-
-    background:#fff;
-
-    border:1px solid var(--border);
-
-    border-radius:14px;
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        border-color .3s ease;
-
-}
-
-.why-card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:
-        0 25px 45px rgba(0,0,0,.07);
-
-    border-color:transparent;
-
-}
-
-.why-icon{
-
-    width:48px;
-
-    height:48px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#f3f4f6;
-
-    border-radius:10px;
-
-    font-size:1.25rem;
-
-    margin-bottom:1.4rem;
-
-    transition:.3s;
-
-}
-
-.why-card:hover .why-icon{
-
-    transform:scale(1.1) rotate(-3deg);
-
-}
-
-.why-card h3{
-
-    font-size:1.05rem;
-
-    margin-bottom:.5rem;
-
-}
-
-.why-card p{
-
-    font-size:.9rem;
-
-    color:var(--muted);
-
-}
-
-
-/* =========================================================
-   OFFER
-========================================================= */
-
-.offer-wrapper{
-
-    background:#fff;
-
-    border:1px solid var(--border);
-
-    border-radius:24px;
-
-    padding:5rem 2rem;
-
-}
-
-.offer-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px,1fr)
-        );
-
-    gap:1.5rem;
-
-}
-
-.offer-card{
-
-    background:#fff;
-
-    border:1.5px solid var(--border);
-
-    border-radius:16px;
-
-    padding:2.5rem;
-
-    position:relative;
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
-
-}
-
-.offer-card:hover{
-
-    transform:translateY(-9px);
-
-    box-shadow:
-        0 25px 50px rgba(0,0,0,.08);
-
-}
-
-.offer-card.featured{
-
-    border-color:var(--text);
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.05);
-
-}
-
-
-.popular{
-
-    position:absolute;
-
-    top:0;
-
-    right:1.5rem;
-
-    transform:translateY(-50%);
-
-    background:var(--text);
-
-    color:#fff;
-
-    padding:.4rem 1rem;
-
-    border-radius:20px;
-
-    font-size:.68rem;
-
-    font-weight:700;
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
-
-}
-
-
-.offer-name{
-
-    font-size:1.1rem;
-
-    font-weight:700;
-
-}
-
-.offer-desc{
-
-    font-size:.85rem;
-
-    color:var(--muted);
-
-    margin-bottom:1.5rem;
-
-}
-
-.offer-price{
-
-    font-size:2.4rem;
-
-    font-weight:800;
-
-    letter-spacing:-1px;
-
-}
-
-.offer-price span{
-
-    font-size:.85rem;
-
-    color:var(--muted);
-
-    font-weight:400;
-
-}
-
-
-.offer-features{
-
-    list-style:none;
-
-    margin:1.5rem 0;
-
-}
-
-.offer-features li{
-
-    padding:.6rem 0;
-
-    border-bottom:1px solid var(--border);
-
-    font-size:.88rem;
-
-}
-
-.offer-features li::before{
-
-    content:"✓";
-
-    color:var(--success);
-
-    font-weight:800;
-
-    margin-right:.6rem;
-
-}
-
-
-.offer-btn{
-
-    display:block;
-
-    width:100%;
-
-    padding:.9rem;
-
-    text-align:center;
-
-    background:#f9fafb;
-
-    border:1px solid var(--border);
-
-    border-radius:8px;
-
-    text-decoration:none;
-
-    font-weight:600;
-
-    transition:.3s;
-
-}
-
-.offer-btn:hover{
-
-    background:var(--text);
-
-    color:#fff;
-
-    transform:translateY(-2px);
-
-}
-
-
-/* =========================================================
-   PROCESS
-========================================================= */
-
-.process-section{
-
-    background:#fff;
-
-    border-top:1px solid var(--border);
-
-    border-bottom:1px solid var(--border);
-
-}
-
-.process-steps{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:2rem;
-
-}
-
-.process-step{
-
-    text-align:center;
-
-}
-
-.step-circle{
-
-    width:60px;
-
-    height:60px;
-
-    border-radius:50%;
-
-    border:2px solid var(--border);
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-weight:800;
-
-    margin:0 auto 1.2rem;
-
-    transition:.3s;
-
-}
-
-.process-step:hover .step-circle{
-
-    background:var(--text);
-
-    color:#fff;
-
-    border-color:var(--text);
-
-    transform:scale(1.08);
-
-}
-
-.process-step h4{
-
-    margin-bottom:.5rem;
-
-}
-
-.process-step p{
-
-    color:var(--muted);
-
-    font-size:.85rem;
-
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-section{
-
-    background:var(--text);
-
-    color:#fff;
-
-}
-
-.contact-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:4rem;
-
-    align-items:center;
-
-}
-
-.contact-info h2{
-
-    font-size:2.3rem;
-
-    letter-spacing:-1px;
-
-    margin-bottom:1rem;
-
-}
-
-.contact-info > p{
-
-    color:rgba(255,255,255,.7);
-
-    margin-bottom:2rem;
-
-}
-
-.contact-detail{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:1rem;
-
-    margin-bottom:1.2rem;
-
-}
-
-.contact-detail-icon{
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:9px;
-
-    background:rgba(255,255,255,.1);
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-}
-
-.contact-detail-text h4{
-
-    font-size:.7rem;
-
-    color:rgba(255,255,255,.5);
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
-
-}
-
-.contact-detail-text a{
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-weight:600;
-
-}
-
-.contact-detail-text a:hover{
-
-    text-decoration:underline;
-
-}
-
-.contact-form{
-
-    background:rgba(255,255,255,.05);
-
-    padding:2.5rem;
-
-    border-radius:16px;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    transition:.3s;
-
-}
-
-.contact-form:hover{
-
-    border-color:rgba(255,255,255,.2);
-
-}
-
-.form-group{
-
-    margin-bottom:1.2rem;
-
-}
-
-.form-group label{
-
-    display:block;
-
-    font-size:.75rem;
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
-
-    color:rgba(255,255,255,.6);
-
-    margin-bottom:.5rem;
-
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-
-    width:100%;
-
-    padding:.85rem 1rem;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    border-radius:8px;
-
-    color:#fff;
-
-    font-family:inherit;
-
-    font-size:.9rem;
-
-    transition:.3s;
-
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-
-    outline:none;
-
-    border-color:rgba(255,255,255,.5);
-
-    background:rgba(255,255,255,.12);
-
-}
-
-.form-group textarea{
-
-    min-height:110px;
-
-    resize:vertical;
-
-}
-
-.form-group select option{
-
-    background:#111827;
-
-}
-
-.submit-btn{
-
-    width:100%;
-
-    padding:1rem;
-
-    background:#fff;
-
-    color:var(--text);
-
-    border:none;
-
-    border-radius:8px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.submit-btn:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.2);
-
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-
-    padding:2.5rem 2rem;
-
-    text-align:center;
-
-    color:var(--muted);
-
-    font-size:.8rem;
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:768px){
-
-    nav{
-
-        padding:1rem 1.3rem;
-
-    }
-
-    nav.scrolled{
-
-        padding:.8rem 1.3rem;
-
-    }
-
-    .nav-links{
-
-        position:absolute;
-
-        top:70px;
-
-        left:0;
-
-        width:100%;
-
-        background:#fff;
-
-        display:none;
-
-        flex-direction:column;
-
-        padding:1.5rem;
-
-        border-bottom:1px solid var(--border);
-
-        box-shadow:0 10px 25px rgba(0,0,0,.05);
-
-    }
-
-    .nav-links.active{
-
-        display:flex;
-
-        animation:menuOpen .3s ease;
-
-    }
-
-    @keyframes menuOpen{
-
-        from{
-            opacity:0;
-            transform:translateY(-10px);
-        }
-
-        to{
-            opacity:1;
-            transform:translateY(0);
-        }
-
-    }
-
-    .mobile-menu{
-
-        display:flex;
-
-    }
-
-    .nav-cta{
-
-        display:none;
-
-    }
-
-    .hero h1{
-
-        font-size:2.4rem;
-
-        letter-spacing:-1.8px;
-
-    }
-
-    .hero p{
-
-        font-size:1rem;
-
-    }
-
-    .section{
-
-        padding:4.5rem 1.3rem;
-
-    }
-
-    .offer-wrapper{
-
-        padding:4rem 1rem;
-
-        border-radius:18px;
-
-    }
-
-    .process-steps{
-
-        grid-template-columns:1fr 1fr;
-
-    }
-
-    .contact-grid{
-
-        grid-template-columns:1fr;
-
-        gap:2rem;
-
-    }
-
-}
-
-@media(max-width:480px){
-
-    .process-steps{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .hero-buttons{
-
-        flex-direction:column;
-
-    }
-
-    .btn-primary,
-    .btn-secondary{
-
-        width:100%;
-
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-
-        animation-duration:.01ms !important;
-
-        animation-iteration-count:1 !important;
-
-        transition-duration:.01ms !important;
-
-        scroll-behavior:auto !important;
-
-    }
-
-}
-
-</style></head><body><!-- =====================================================
-     NAV
-===================================================== --><nav id="navbar"><a href="#home" class="logo">
-Web<span>Studio</span>
-</a><ul class="nav-links"><li>
-<a href="#home">
-Strona główna
-</a>
-</li><li>
-<a href="o-nas.html">
-O nas
-</a>
-</li><li>
-<a href="#oferta">
-Oferta
-</a>
-</li><li>
-<a href="jak-to-dziala.html">
-Jak to działa
-</a>
-</li><li>
-<a href="#kontakt">
-Kontakt
-</a>
-</li></ul><a href="#kontakt" class="nav-cta">
-Zamów stronę
-</a><div
-class="mobile-menu"
-onclick="document.querySelector('.nav-links').classList.toggle('active')"
-><span></span>
-<span></span>
-<span></span>
-
-</div></nav><!-- =====================================================
-     HERO
-===================================================== --><section class="hero" id="home"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge">
-Strony internetowe na zamówienie
-</div><h1>Twoja nowa strona
-
-<span class="highlight">
-od 400 zł
-</span></h1><p>Tworzę nowoczesne, responsywne i estetyczne strony internetowe
-dla małych firm i osób prywatnych. Prosto, szybko i bez zbędnych komplikacji.
-
-</p><div class="hero-buttons"><a
-href="#oferta"
-class="btn-primary"
-
-«»
-
-Zobacz ofertę
-</a>
-
-<a
-href="o-nas.html"
-class="btn-secondary"
-
-«»
-
-Poznaj WebStudio
-</a>
-
-</div></div></section><!-- =====================================================
-     WHY
-===================================================== --><section class="section reveal"><div class="section-header"><div class="section-label">
-Dlaczego warto
-</div><h2 class="section-title">
-Co dostajesz w cenie
-</h2><p class="section-sub">Każda strona jest projektowana z myślą o wyglądzie,
-szybkości i wygodzie użytkownika.
-
-</p></div><div class="why-grid"><div class="why-card"><div class="why-icon">
-💻
-</div><h3>
-Responsywny design
-</h3><p>
-Strona wygląda dobrze na komputerze,
-tablecie i smartfonie.
-</p></div><div class="why-card"><div class="why-icon">
-⚡
-</div><h3>
-Szybkie działanie
-</h3><p>
-Lekka konstrukcja zapewnia szybkie
-ładowanie strony.
-</p></div><div class="why-card"><div class="why-icon">
-✨
-</div><h3>
-Nowoczesny wygląd
-</h3><p>
-Czysty, profesjonalny design dopasowany
-do charakteru firmy.
-</p></div><div class="why-card"><div class="why-icon">
-🛠️
-</div><h3>
-Wsparcie
-</h3><p>
-Pomagam przy drobnych zmianach
-i aktualizacjach.
-</p></div></div></section><!-- =====================================================
-     OFERTA
-===================================================== --><section class="section reveal" id="oferta"><div class="offer-wrapper"><div class="section-header"><div class="section-label">
-Oferta
-</div><h2 class="section-title">
-Wybierz pakiet dla siebie
-</h2><p class="section-sub">Proste warianty dopasowane do różnych
-potrzeb i budżetów.
-
-</p></div><div class="offer-grid"><div class="offer-card"><div class="offer-name">
-Pakiet MINI
-</div><div class="offer-desc">
-Idealny na start
-</div><div class="offer-price">
-400 zł
-</div><ul class="offer-features"><li>
-Strona one-page
-</li><li>
-Responsywny design
-</li><li>
-Sekcja O nas
-</li><li>
-Sekcja Kontakt
-</li><li>
-Podstawowa optymalizacja SEO
-</li></ul><a
-href="#kontakt"
-class="offer-btn"
-
-«»
-
-Wybieram
-</a>
-
-</div><div class="offer-card featured"><div class="popular">
-Najpopularniejszy
-</div><div class="offer-name">
-Pakiet PRO
-</div><div class="offer-desc">
-Pełna wizytówka firmy
-</div><div class="offer-price">
-700 zł
-</div><ul class="offer-features"><li>
-Do 5 podstron
-</li><li>
-Profesjonalny design
-</li><li>
-Responsywność
-</li><li>
-Formularz kontaktowy
-</li><li>
-Mapa i social media
-</li><li>
-Podstawowe SEO
-</li></ul><a
-href="#kontakt"
-class="offer-btn"
-
-«»
-
-Wybieram
-</a>
-
-</div><div class="offer-card"><div class="offer-name">
-Pakiet PREMIUM
-</div><div class="offer-desc">
-Rozbudowana strona
 </div>
+</nav><header class="hero"><div class="container hero-content"><div class="badge">Strony internetowe na zamówienie</div><h1>
+Twoja nowa strona
+<span class="gradient-text">od 400 zł</span>
+</h1><p>
+Nowoczesne, responsywne i estetyczne strony internetowe
+dla małych firm i osób prywatnych.
+</p><div class="buttons"><a href="#oferta" class="btn btn-dark">Zobacz ofertę</a>
+
+<a href="o-nas.html" class="btn btn-light">Poznaj WebStudio</a>
+
+</div></div></header><section class="section reveal"><div class="container"><div class="section-head"><div class="label">Dlaczego warto</div><h2 class="section-title">Strona, która robi dobre pierwsze wrażenie.</h2><p class="section-subtitle">
+Dobra strona internetowa ma wyglądać profesjonalnie,
+działać szybko i być wygodna dla klienta.
+</p></div><div class="grid"><div class="card">
+<div class="icon">💻</div>
+<h3>Responsywność</h3>
+<p>Strona dopasowuje się do telefonu, tabletu i komputera.</p>
+</div><div class="card">
+<div class="icon">⚡</div>
+<h3>Szybkość</h3>
+<p>Tworzymy lekkie strony, które szybko się ładują.</p>
+</div><div class="card">
+<div class="icon">✨</div>
+<h3>Nowoczesny design</h3>
+<p>Minimalistyczny i profesjonalny wygląd dopasowany do marki.</p>
+</div></div></div></section><section class="section reveal"><div class="container"><div class="section-head"><div class="label">Portfolio</div><h2 class="section-title">Przykładowe realizacje</h2><p class="section-subtitle">
+Tak może wyglądać Twoja przyszła strona.
+</p></div><div class="portfolio"><div class="project">
+<div class="project-preview">BARBER</div>
+<div class="project-info">
+<h3>Salon barberski</h3>
+<p>Nowoczesna wizytówka z ofertą i kontaktem.</p>
+</div>
+</div><div class="project">
+<div class="project-preview">MECHANIK</div>
+<div class="project-info">
+<h3>Warsztat samochodowy</h3>
+<p>Strona usługowa dla lokalnego biznesu.</p>
+</div>
+</div><div class="project">
+<div class="project-preview">RESTAURACJA</div>
+<div class="project-info">
+<h3>Restauracja</h3>
+<p>Elegancka strona z menu i informacjami.</p>
+</div>
+</div></div></div></section><section class="section reveal" id="oferta"><div class="container"><div class="section-head"><div class="label">Oferta</div><h2 class="section-title">Proste pakiety.</h2><p class="section-subtitle">
+Wybierz wariant odpowiadający Twoim potrzebom.
+</p></div><div class="pricing"><div class="price-card"><div class="price-name">MINI</div><div class="price-description">Idealny na start</div><div class="price">400 zł</div><ul class="price-list">
+<li>One-page</li>
+<li>Responsywny design</li>
+<li>Sekcja O nas</li>
+<li>Sekcja Kontakt</li>
+<li>Podstawowe SEO</li>
+</ul><a href="#kontakt" class="full-btn" onclick="choosePackage('Pakiet MINI — 400 zł')">
+Wybieram
+</a></div><div class="price-card featured"><div class="popular">Najpopularniejszy</div><div class="price-name">PRO</div><div class="price-description">Pełna wizytówka firmy</div><div class="price">700 zł</div><ul class="price-list">
+<li>Do 5 podstron</li>
+<li>Profesjonalny design</li>
+<li>Responsywność</li>
+<li>Formularz kontaktowy</li>
+<li>Mapa i social media</li>
+<li>SEO</li>
+</ul><a href="#kontakt" class="full-btn" onclick="choosePackage('Pakiet PRO — 700 zł')">
+Wybieram
+</a></div><div class="price-card"><div class="price-name">PREMIUM</div><div class="price-description">Rozbudowana strona</div><div class="price">1000 zł</div><ul class="price-list">
+<li>Do 10 podstron</li>
+<li>Rozbudowany design</li>
+<li>Animacje</li>
+<li>Galeria</li>
+<li>Formularze</li>
+<li>Wsparcie</li>
+</ul><a href="#kontakt" class="full-btn" onclick="choosePackage('Pakiet PREMIUM — 1000 zł')">
+Wybieram
+</a></div></div></div></section><section class="section reveal"><div class="container"><div class="section-head"><div class="label">Jak to działa</div><h2 class="section-title">Od pomysłu do gotowej strony.</h2></div><div class="process"><div class="step">
+<div class="step-number">1</div>
+<h3>Kontakt</h3>
+<p>Opowiadasz mi o swojej firmie i potrzebach.</p>
+</div><div class="step">
+<div class="step-number">2</div>
+<h3>Wycena</h3>
+<p>Ustalamy zakres projektu, cenę i termin.</p>
+</div><div class="step">
+<div class="step-number">3</div>
+<h3>Realizacja</h3>
+<p>Tworzę stronę i dopasowuję ją do Twojej marki.</p>
+</div><div class="step">
+<div class="step-number">4</div>
+<h3>Odbiór</h3>
+<p>Sprawdzasz gotową stronę i zgłaszasz poprawki.</p>
+</div></div></div></section><section class="contact reveal" id="kontakt"><div class="container contact-grid"><div><h2>Masz pomysł?<br>Porozmawiajmy.</h2><p class="contact-description">
+Napisz, czego potrzebujesz. Odpowiem i wspólnie
+ustalimy najlepsze rozwiązanie.
+</p><a class="email-box" href="mailto:webstudio561@gmail.com">
+webstudio561@gmail.com
+</a></div><div class="form"><form onsubmit="sendEmail(event)"><div class="form-group">
+<label>Imię i nazwisko</label>
+<input id="name" type="text" placeholder="Jan Kowalski" required>
+</div><div class="form-group">
+<label>Email</label>
+<input id="email" type="email" placeholder="jan@example.com" required>
+</div><div class="form-group">
+<label>Pakiet</label><select id="package" required><option value="">Wybierz pakiet</option>
+<option>Pakiet MINI — 400 zł</option>
+<option>Pakiet PRO — 700 zł</option>
+<option>Pakiet PREMIUM — 1000 zł</option>
+<option>Indywidualna wycena</option></select></div><div class="form-group">
+<label>Wiadomość</label>
+<textarea id="message" placeholder="Opisz swoją stronę..." required></textarea>
+</div><button class="submit" type="submit">
+Przejdź do wiadomości
+</button></form></div></div></section><footer>
+<div class="container">
+© 2026 WebStudio — Tworzenie stron internetowych.
+</div>
+</footer><script>
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("open");
+}
+
+window.addEventListener("scroll",function(){
+
+    document
+        .getElementById("navbar")
+        .classList.toggle("scrolled",window.scrollY>40);
+
+});
+
+
+function choosePackage(packageName){
+
+    setTimeout(function(){
+
+        document.getElementById("package").value=packageName;
+
+    },100);
+
+}
+
+
+function sendEmail(event){
+
+    event.preventDefault();
+
+    const name=document.getElementById("name").value;
+    const email=document.getElementById("email").value;
+    const packageName=document.getElementById("package").value;
+    const message=document.getElementById("message").value;
+
+    const subject=encodeURIComponent(
+        "Zapytanie o stronę — "+packageName
+    );
+
+    const body=encodeURIComponent(
+        "Imię i nazwisko: "+name+
+        "\nEmail: "+email+
+        "\nPakiet: "+packageName+
+        "\n\nWiadomość:\n"+message
+    );
+
+    window.location.href=
+        "mailto:webstudio561@gmail.com"+
+        "?subject="+subject+
+        "&body="+body;
+
+}
+
+
+const observer=new IntersectionObserver(
+    entries=>{
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("visible");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {threshold:.12}
+);
+
+document.querySelectorAll(".reveal").forEach(
+    element=>observer.observe(element)
+);
+
+</script></body>
+   </html>
